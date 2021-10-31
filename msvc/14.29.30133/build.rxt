@@ -1,0 +1,87 @@
+{
+    "append_sys_path": true,
+    "arch": "AMD64",
+    "building": true,
+    "caching": true,
+    "created": 1635645604,
+    "default_patch_lock": "no_lock",
+    "failure_description": null,
+    "from_cache": false,
+    "graph": "{'nodes': [((('fillcolor', '#AAFFAA'), ('fontsize', 10), ('style', 'filled')), [('_8', 'python-2.7.15[0]'), ('_7', 'os-windows-10.0.19035[]'), ('_6', 'arch-AMD64[]'), ('_5', 'platform-windows[]')]), ((('fillcolor', '#F6F6F6'), ('fontsize', 10), ('style', 'filled,dashed')), [('_9', 'platform-windows'), ('_11', 'os-windows-10.0.19035'), ('_10', 'arch-AMD64')]), ((('fillcolor', '#FFFFAA'), ('fontsize', 10), ('style', 'filled,dashed')), [('_4', '~os==windows-10.0.19035'), ('_3', '~arch==AMD64'), ('_2', 'python-2.7+<3'), ('_1', 'platform==windows')])], 'edges': [((('arrowsize', '0.5'),), [('_9', '_5'), ('_8', '_9'), ('_8', '_11'), ('_8', '_10'), ('_7', '_9'), ('_7', '_10'), ('_4', '_7'), ('_3', '_6'), ('_2', '_8'), ('_1', '_5'), ('_11', '_7'), ('_10', '_6')])]}",
+    "host": "vrexton",
+    "implicit_packages": [
+        "~platform==windows",
+        "~arch==AMD64",
+        "~os==windows-10.0.19035"
+    ],
+    "load_time": 0.0,
+    "num_loaded_packages": 4,
+    "os": "windows-10.0.19035",
+    "package_caching": false,
+    "package_filter": [],
+    "package_orderers": null,
+    "package_paths": [
+        "C:\\Users\\Jonas\\packages",
+        "C:\\Users\\Jonas\\.rez\\packages\\int",
+        "C:\\Users\\Jonas\\.rez\\packages\\ext"
+    ],
+    "package_requests": [
+        "platform-windows",
+        "python-2.7+<3"
+    ],
+    "parent_suite_path": null,
+    "patch_locks": {},
+    "platform": "windows",
+    "requested_timestamp": null,
+    "resolved_ephemerals": [],
+    "resolved_packages": [
+        {
+            "key": "filesystem.variant",
+            "variables": {
+                "index": null,
+                "location": "c:\\users\\jonas\\packages",
+                "name": "platform",
+                "repository_type": "filesystem",
+                "version": "windows"
+            }
+        },
+        {
+            "key": "filesystem.variant",
+            "variables": {
+                "index": null,
+                "location": "c:\\users\\jonas\\packages",
+                "name": "arch",
+                "repository_type": "filesystem",
+                "version": "AMD64"
+            }
+        },
+        {
+            "key": "filesystem.variant",
+            "variables": {
+                "index": null,
+                "location": "c:\\users\\jonas\\packages",
+                "name": "os",
+                "repository_type": "filesystem",
+                "version": "windows-10.0.19035"
+            }
+        },
+        {
+            "key": "filesystem.variant",
+            "variables": {
+                "index": 0,
+                "location": "c:\\users\\jonas\\packages",
+                "name": "python",
+                "repository_type": "filesystem",
+                "version": "2.7.15"
+            }
+        }
+    ],
+    "rez_path": "c:\\rez\\lib\\site-packages\\rez",
+    "rez_version": "2.95.3",
+    "serialize_version": "4.7",
+    "solve_time": 0.006000041961669922,
+    "status": "solved",
+    "suite_context_name": null,
+    "timestamp": 1635645604,
+    "user": "Jonas"
+}

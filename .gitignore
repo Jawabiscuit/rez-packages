@@ -1,0 +1,7 @@
+*.pyc
+*~
+*#
+build
+env.ps1
+start.ps1
+*.org
