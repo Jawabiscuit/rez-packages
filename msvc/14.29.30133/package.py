@@ -21,8 +21,8 @@ def commands():
     msvc_version = "14.29.30133"
     vs_version = "16.11"
     win_sdk_version = "10.0.19041.0"
-    install_root_dir = "Community"  # Community/BuildTools
-    install_dir = os.path.normpath("C:/Program Files (x86)/Microsoft Visual Studio/2019/{}".format(install_root_dir))
+    install_root_dir = "vs_BuildTools2019"  # Community/BuildTools
+    install_dir = os.path.join(os.path.normpath("C:/"), install_root_dir)
     sdk_dir = os.path.normpath("C:/Program Files (x86)/Windows Kits/10")
     sdk_lib_dir = os.path.join(sdk_dir, "Lib", win_sdk_version)
     sdk_bin_dir = os.path.join(sdk_dir, "bin", win_sdk_version)
