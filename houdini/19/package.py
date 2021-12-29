@@ -2,7 +2,7 @@
 
 name = "houdini"
 
-version = "18.5.759"
+version = "19.0.455"
 
 authors = [
     "SideFX",
@@ -77,7 +77,7 @@ def commands():
     )
     env.HFS = hfs
     env.PATH.prepend(os.path.join(hfs, "bin"))
-    env.PATH.prepend(os.path.join(hfs, os.path.join("python27", "Scripts")))
-    env.PYTHONPATH.prepend(os.path.join(hfs, os.path.normpath("houdini", "python2.7libs")))
-    env.PYTHONPATH.prepend(os.path.join(hfs, os.path.normpath("python27", "lib", "site-packages")))
-    env.PYTHONPATH.prepend(os.path.join(hfs, os.path.normpath("python27", "lib", "site-packages-forced", "PySide2")))
+    env.PATH.prepend(os.path.join(hfs, os.path.join("python37", "Scripts")))
+    env.PYTHONPATH.prepend(os.path.join(hfs, os.path.join("houdini", "python3.7libs")))
+    env.PYTHONPATH.prepend(os.path.join(hfs, os.path.join("python37", "lib", "site-packages")))
+    env.PYTHONPATH.prepend(os.path.join(hfs, os.path.join("python37", "lib", "site-packages-forced", "PySide2")))

@@ -22,8 +22,8 @@ def commands():
     vs_version = "16.11"
     win_sdk_version = "10.0.19041.0"
     install_root_dir = "vs_BuildTools2019"  # Community/BuildTools
-    install_dir = os.path.join(os.path.normpath("C:/"), install_root_dir)
-    sdk_dir = os.path.normpath("C:/Program Files (x86)/Windows Kits/10")
+    install_dir = os.path.join("C:", os.sep, install_root_dir)
+    sdk_dir = os.path.join("C:", os.sep, "Program Files (x86)", "Windows Kits", "10")
     sdk_lib_dir = os.path.join(sdk_dir, "Lib", win_sdk_version)
     sdk_bin_dir = os.path.join(sdk_dir, "bin", win_sdk_version)
     vc_tools_dir = os.path.join(install_dir, "VC", "Tools", "MSVC", msvc_version)
@@ -46,7 +46,11 @@ def commands():
     # Path to mt.exe required by the linker
     env.PATH.append(os.path.join(sdk_bin_dir, "x64"))
     # Path to cmake.exe
-    env.PATH.append(os.path.join(install_dir, "Common7", "IDE", "CommonExtensions", "Microsoft", "CMake", "CMake", "bin"))
+    env.PATH.append(os.path.join(
+            install_dir, "Common7", "IDE", "CommonExtensions",
+            "Microsoft", "CMake", "CMake", "bin"
+        )
+    )
 
     env.CMAKE_GENERATOR.append("Visual Studio 16 2019")
     env.EnterpriseWDK.append("true")
