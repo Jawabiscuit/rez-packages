@@ -1,0 +1,25 @@
+{
+    "installChannelUri": ".\\ChannelManifest.json",
+    "channelUri": "https://aka.ms/vs/16/release/channel",
+    "installCatalogUri": ".\\Catalog.json",
+    "channelId": "VisualStudio.16.Release",
+    "productId": "Microsoft.VisualStudio.Product.BuildTools",
+  
+    "installPath": "C:\\vs_BuildTools2019",
+    "includeRecommended": true,
+    "includeOptional": false,
+    "quiet": true,
+    "norestart": true,
+  
+    "addProductLang": [
+      "en-US"
+      ],
+  
+    "add": [
+      "Microsoft.VisualStudio.Workload.MSBuildTools",
+      "Microsoft.VisualStudio.Component.Windows10SDK",
+      "Microsoft.VisualStudio.Component.Windows10SDK.19041",
+      "Microsoft.VisualStudio.Component.VC.Tools.x86.x64",
+      "Microsoft.VisualStudio.Component.VC.CMake.Project"
+    ]
+  }
