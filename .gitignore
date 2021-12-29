@@ -6,3 +6,4 @@ env.ps1
 start.ps1
 *.org
 *.rxt
+*.exe
