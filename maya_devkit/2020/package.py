@@ -54,6 +54,6 @@ def commands():
         devkit_location = os.path.join("{root}", "devkitBase")
 
         env.DEVKIT_LOCATION = devkit_location
-        env.MAYA_PLUG_IN_PATH.prepend(os.path.join(devkit_location, "devkit", "plug-ins"))
+        env.MAYA_PLUG_IN_PATH.prepend(os.path.join(devkit_location, "devkit", "plug-ins", "scripted"))
         env.PYTHONPATH.prepend(os.path.join(devkit_location, "devkit", "pythonScripts"))
         env.XBMLANGPATH.prepend(os.path.join(devkit_location, "devkit", "icons"))
