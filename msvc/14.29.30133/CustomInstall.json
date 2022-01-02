@@ -5,10 +5,10 @@
     "channelId": "VisualStudio.16.Release",
     "productId": "Microsoft.VisualStudio.Product.BuildTools",
   
-    "installPath": "C:\\vs_BuildTools2019",
     "includeRecommended": true,
     "includeOptional": false,
     "quiet": true,
+    "nocache": true,
     "norestart": true,
   
     "addProductLang": [
