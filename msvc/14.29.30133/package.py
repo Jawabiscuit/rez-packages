@@ -2,6 +2,10 @@
 
 name = "msvc"
 
+description = ""
+
+help = "https://devblogs.microsoft.com/cppblog/introducing-the-visual-studio-build-tools"
+
 version = "14.29.30133"
 
 requires = [
@@ -12,7 +16,15 @@ private_build_requires = [
     "python-2.7+<3"
 ]
 
-build_command = "python {root}/package.py {install}"
+
+@early()
+def build_command():
+    import os
+
+    command = 'pwsh -File "{0}"'
+    prefix = "%REZ_BUILD_SOURCE_PATH%"
+    script = "build.ps1"
+    return command.format(os.path.join(prefix, script))
 
 
 def commands():
@@ -21,8 +33,7 @@ def commands():
     msvc_version = "14.29.30133"
     vs_version = "16.11"
     win_sdk_version = "10.0.19041.0"
-    install_root_dir = "vs_BuildTools2019"  # Community/BuildTools
-    install_dir = os.path.join("C:", os.sep, install_root_dir)
+    install_dir = os.path.join("{root}", "vs_BuildTools")
     sdk_dir = os.path.join("C:", os.sep, "Program Files (x86)", "Windows Kits", "10")
     sdk_lib_dir = os.path.join(sdk_dir, "Lib", win_sdk_version)
     sdk_bin_dir = os.path.join(sdk_dir, "bin", win_sdk_version)
