@@ -20,7 +20,8 @@ variants = [
 ]
 
 requires = [
-    "~maya-2020"
+    "~maya-2020",
+    "msvc-14+<15",
 ]
 
 private_build_requires = [
@@ -55,5 +56,9 @@ def commands():
 
         env.DEVKIT_LOCATION = devkit_location
         env.MAYA_PLUG_IN_PATH.prepend(os.path.join(devkit_location, "devkit", "plug-ins", "scripted"))
+        env.MAYA_PLUG_IN_PATH.prepend(os.path.join(devkit_location, "plug-ins"))
         env.PYTHONPATH.prepend(os.path.join(devkit_location, "devkit", "pythonScripts"))
         env.XBMLANGPATH.prepend(os.path.join(devkit_location, "devkit", "icons"))
+        env.LIB.prepend(os.path.join(devkit_location, "lib"))
+        env.INCLUDE.prepend(os.path.join(devkit_location, "include"))
+        env.PATH.prepend(os.path.join(devkit_location, "devkit", "bin"))

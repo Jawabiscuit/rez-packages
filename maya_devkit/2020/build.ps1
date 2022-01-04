@@ -4,6 +4,26 @@ $Zip_File = "$env:REZ_BUILD_SOURCE_PATH\rel\Autodesk_Maya_${Major}_${Minor}_Upda
 
 if (!(Test-Path ".\devkitBase")) {
     Expand-Archive "$Zip_File" -DestinationPath .
+
+    Push-Location ".\devkitBase"
+
+    if ((Test-Path ".\mkspecs")) {
+        Push-Location -Path "mkspecs"
+        Get-ChildItem . | Where-Object {$_.Name -like "*.zip"} | ForEach-Object {Expand-Archive $_ -DestinationPath .}
+        Pop-Location
+    }
+
+    if ((Test-Path ".\include")) {
+        Push-Location -Path "include"
+        Get-ChildItem . | Where-Object {$_.Name -like "*.zip"} | ForEach-Object {Expand-Archive $_ -DestinationPath .}
+        Pop-Location
+    }
+
+    if (!(Test-Path ".\plug-ins")) {
+        New-Item -Path . -Name "plug-ins" -ItemType "directory"
+    }
+
+    Pop-Location
 }
 
 if (!($env:REZ_BUILD_INSTALL -eq "1")) {
@@ -13,27 +33,11 @@ if (!($env:REZ_BUILD_INSTALL -eq "1")) {
 
 Write-Host "Installing..." -ForegroundColor "Green"
 
-Push-Location ".\devkitBase"
-
-if ((Test-Path ".\mkspecs")) {
-    Push-Location -Path "mkspecs"
-    Get-ChildItem . | Where-Object {$_.Name -like "*.zip"} | ForEach-Object {Expand-Archive $_ -DestinationPath .}
-    Pop-Location
-}
-
-if ((Test-Path ".\include")) {
-    Push-Location -Path "include"
-    Get-ChildItem . | Where-Object {$_.Name -like "*.zip"} | ForEach-Object {Expand-Archive $_ -DestinationPath .}
-    Pop-Location
-}
-
-Pop-Location
-
 $DevkitLocation = "$env:REZ_BUILD_INSTALL_PATH\devkitBase"
 if (Test-Path $DevkitLocation) {
     Remove-Item $DevkitLocation -Recurse -Force
 }
-Move-Item -Path ".\devkitBase" -Destination $env:REZ_BUILD_INSTALL_PATH
+Copy-Item -Path ".\devkitBase" -Destination $env:REZ_BUILD_INSTALL_PATH -Recurse
 
 Push-Location $DevkitLocation
 
