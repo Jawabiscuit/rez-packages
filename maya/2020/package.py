@@ -40,13 +40,13 @@ def build(
     install_mode = "install" in targets
 
     def _build():
-        src = os.path.normpath(os.path.join(source_path, "MayaNoColorManagement.xml"))
-        dest = os.path.normpath(os.path.join(build_path, "MayaNoColorManagement.xml"))
+        src = os.path.join(source_path, "MayaNoColorManagement.xml")
+        dest = os.path.join(build_path, "MayaNoColorManagement.xml")
         _copyfile(src, dest)
     
     def _install():
-        src = os.path.normpath(os.path.join(build_path, "MayaNoColorManagement.xml"))
-        dest = os.path.normpath(os.path.join(install_path, "MayaNoColorManagement.xml"))
+        src = os.path.join(build_path, "MayaNoColorManagement.xml")
+        dest = os.path.join(install_path, "MayaNoColorManagement.xml")
         _copyfile(src, dest)
     
     def _copyfile(src, dest):
@@ -76,6 +76,8 @@ def commands():
     env.MAYA_VERSION = str(this.version)
     env.MAYA_INSTALL_PATH = maya_install_path
     env.MAYA_LOCATION = maya_install_path
+    env.LIB.prepend(os.path.join(maya_install_path, "lib"))
+    env.INCLUDE.prepend(os.path.join(maya_install_path, "include"))
     env.PATH.prepend(os.path.join(maya_install_path, "bin"))
     env.PYTHONPATH.prepend(
         os.path.join(
