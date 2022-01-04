@@ -36,6 +36,7 @@ def commands():
     install_dir = os.path.join("{root}", "vs_BuildTools")
     sdk_dir = os.path.join("C:", os.sep, "Program Files (x86)", "Windows Kits", "10")
     sdk_lib_dir = os.path.join(sdk_dir, "Lib", win_sdk_version)
+    sdk_include_dir = os.path.join(sdk_dir, "Include", win_sdk_version)
     sdk_bin_dir = os.path.join(sdk_dir, "bin", win_sdk_version)
     vc_tools_dir = os.path.join(install_dir, "VC", "Tools", "MSVC", msvc_version)
 
@@ -46,10 +47,17 @@ def commands():
     # Path to ucrtd.lib
     env.LIB.append(os.path.join(sdk_lib_dir, "ucrt", "x64"))
 
+    # Path to type_traits for Maya Qt dev
+    env.INCLUDE.append(os.path.join(vc_tools_dir, "include"))
+    # Path to stddef.h for Maya Qt dev
+    env.INCLUDE.append(os.path.join(sdk_include_dir, "ucrt"))
+    # Path to basetsd.h for Maya Qt dev
+    env.INCLUDE.append(os.path.join(sdk_include_dir, "shared"))
+
     # Path to VsDevCmd.bat and VsMsBuildCmd.bat
     env.PATH.append(os.path.join(install_dir, "Common7", "Tools"))
     # Path to vcvarsall.bat
-    env.PATH.append(os.path.join(install_dir, "VC", "Auxilliary", "Build"))
+    env.PATH.append(os.path.join(install_dir, "VC", "Auxiliary", "Build"))
     # Path to MSBuild.exe
     env.PATH.append(os.path.join(install_dir, "MSBuild", "Current", "Bin"))
     # Path to cl.exe and link.exe
