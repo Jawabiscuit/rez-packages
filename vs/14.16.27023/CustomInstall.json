@@ -1,0 +1,20 @@
+{
+    "installChannelUri":".\\ChannelManifest.json",
+    "channelUri":"https://aka.ms/vs/15/release/channel",
+    "installCatalogUri":".\\Catalog.json",
+    "channelId":"VisualStudio.15.Release",
+    "productId":"Microsoft.VisualStudio.Product.Community",
+    
+    "includeRecommended": false,
+    "includeOptional": false,
+    "quiet": true,
+    "nocache": true,
+    "norestart": true,
+
+    "add":[
+      "Microsoft.Component.MSBuild",
+      "Microsoft.VisualStudio.Component.VC.CMake.Project",
+      "Microsoft.VisualStudio.Component.VC.CoreIde",
+      "Microsoft.VisualStudio.Component.VC.Tools.x86.x64",
+      "Microsoft.VisualStudio.Component.Windows10SDK.17763"]
+}
