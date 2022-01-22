@@ -1,7 +1,7 @@
 $Exe_File = "$env:REZ_BUILD_SOURCE_PATH\rel\vs_BuildTools.exe"
 
 # Extract the setup files
-if (!(Test-Path ".\vs_BuildTools")) {
+if (!(Test-Path ".\vs_BuildTools\Response.json")) {
     if (Test-Path $Exe_File) {
         $pinfo = New-Object System.Diagnostics.ProcessStartInfo
         $pinfo.FileName = $Exe_File
@@ -16,16 +16,12 @@ if (!(Test-Path ".\vs_BuildTools")) {
         $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.Windows10SDK")
         $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.Windows10SDK.19041")
         $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.VC.Tools.x86.x64")
+        $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.VC.v141.x86.x64")
         $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.VC.CMake.Project")
-        $pinfo.ArgumentList.Add("--keepLayoutVersion")
         $process = New-Object System.Diagnostics.Process
         $process.StartInfo = $pinfo
         $process.Start() | Out-Null
         $process.WaitForExit()
-        # $stdout = $process.StandardOutput.ReadToEnd()
-        # $stderr = $process.StandardError.ReadToEnd()
-        # Write-Host "stdout: $stdout"
-        # Write-Host "stderr: $stderr"
         Write-Host "exit code: " + $process.ExitCode
     }
 }
@@ -53,9 +49,5 @@ if (Test-Path ".\vs_BuildTools") {
     $process.StartInfo = $pinfo
     $process.Start() | Out-Null
     $process.WaitForExit()
-    # $stdout = $process.StandardOutput.ReadToEnd()
-    # $stderr = $process.StandardError.ReadToEnd()
-    # Write-Host "stdout: $stdout"
-    # Write-Host "stderr: $stderr"
     Write-Host "exit code: " + $process.ExitCode
 }
