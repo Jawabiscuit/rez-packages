@@ -12,12 +12,10 @@ if (!(Test-Path ".\vs_Community_2017\Response.json")) {
         $pinfo.ArgumentList.Add("--layout")
         $pinfo.ArgumentList.Add(".\vs_Community_2017")
         $pinfo.ArgumentList.Add("--add")
-        $pinfo.ArgumentList.Add("Microsoft.Component.MSBuild")
-        $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.VC.CoreIde")
-        $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.Windows10SDK.17763")
+        $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Workload.NativeDesktop")
         $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.VC.Tools.x86.x64")
         $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.VC.CMake.Project")
-        $pinfo.ArgumentList.Add("--keepLayoutVersion")
+        $pinfo.ArgumentList.Add("Microsoft.VisualStudio.Component.Windows10SDK.17763")
         $process = New-Object System.Diagnostics.Process
         $process.StartInfo = $pinfo
         $process.Start() | Out-Null
@@ -28,7 +26,6 @@ if (!(Test-Path ".\vs_Community_2017\Response.json")) {
 
 if (!($env:REZ_BUILD_INSTALL -eq "1")) {
     Write-Host "Nothing more to do. Use 'rez-build -i' to install."
-    Write-Host "First, copy Response.json and create CustomInstall.json if not already done so."
     Exit 0
 }
 
