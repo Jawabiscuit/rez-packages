@@ -2,7 +2,7 @@
 
 name = "msvc"
 
-description = ""
+description = "Bare minimum build tools for C/C++"
 
 help = "https://devblogs.microsoft.com/cppblog/introducing-the-visual-studio-build-tools"
 
