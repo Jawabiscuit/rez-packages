@@ -2,7 +2,7 @@
 
 A rez package for Windows that contains the minimal set of Visual Studio build tools for building C/C++ as well as other rez packages that make use of the cmake build generator.
 
-All that is necessary to `rez build` is to download the appropriate version of [vs_BuildTools](https://aka.ms/vs/16/release/vs_BuildTools.exe) and put it in `.\rel`.
+All that is necessary to `rez build` is to download the appropriate version of [vs_BuildTools](https://aka.ms/vs/15/release/vs_BuildTools.exe) and put it in `.\rel`.
 
 ## Build Tools Installation Details
 
