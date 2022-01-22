@@ -1,5 +1,6 @@
 $Major = $Args[0]
 $Minor = $Args[1]
+$DoCopy = $Minor = $Args[2]
 $Zip_File = "$env:REZ_BUILD_SOURCE_PATH\rel\Autodesk_Maya_${Major}_${Minor}_Update_DEVKIT_Windows.zip"
 
 if (!(Test-Path ".\devkitBase")) {
@@ -34,10 +35,12 @@ if (!($env:REZ_BUILD_INSTALL -eq "1")) {
 Write-Host "Installing..." -ForegroundColor "Green"
 
 $DevkitLocation = "$env:REZ_BUILD_INSTALL_PATH\devkitBase"
-if (Test-Path $DevkitLocation) {
+if ($DoCopy -and (Test-Path $DevkitLocation)) {
     Remove-Item $DevkitLocation -Recurse -Force
 }
-Copy-Item -Path ".\devkitBase" -Destination $env:REZ_BUILD_INSTALL_PATH -Recurse
+if ($DoCopy) {
+    Copy-Item -Path ".\devkitBase" -Destination $env:REZ_BUILD_INSTALL_PATH -Recurse
+}
 
 Push-Location $DevkitLocation
 
