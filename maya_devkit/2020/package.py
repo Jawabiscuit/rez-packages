@@ -37,14 +37,16 @@ def build_command():
     import os
 
     if os.name == "nt":
-        command = 'pwsh -File "{0}" "{1}" "{2}"'
+        command = 'pwsh -File "{0}" "{1}" "{2}" "{3}"'
         prefix = "%REZ_BUILD_SOURCE_PATH%"
         script = "build.ps1"
+        docopy = 1  # Set this to 0 to disable copying the extracted devkit to install dir
     
         return command.format(
             os.path.join(prefix, script),
             this.version.split(".")[0],
-            this.version.split(".")[1]
+            this.version.split(".")[1],
+            docopy
         )
 
 
@@ -52,9 +54,10 @@ def commands():
     import os
 
     if os.name == "nt":
-        devkit_location = os.path.join("{root}", "devkitBase")
+        devkit_location = os.path.join(this.root, "devkitBase")
 
-        env.DEVKIT_LOCATION = devkit_location
+        # Better for cmake if slashes are unix-style
+        env.DEVKIT_LOCATION = devkit_location.replace("\\", "/")
         env.MAYA_PLUG_IN_PATH.prepend(os.path.join(devkit_location, "devkit", "plug-ins", "scripted"))
         env.MAYA_PLUG_IN_PATH.prepend(os.path.join(devkit_location, "plug-ins"))
         env.PYTHONPATH.prepend(os.path.join(devkit_location, "devkit", "pythonScripts"))
