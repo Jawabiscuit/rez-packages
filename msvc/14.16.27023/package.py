@@ -2,9 +2,9 @@
 
 name = "msvc"
 
-description = "Microsoft IDE"
+description = "Bare minimum build tools for C/C++"
 
-help = "https://docs.microsoft.com/en-us/visualstudio/install/visual-studio-build-numbers-and-release-dates?view=vs-2017"
+help = "https://devblogs.microsoft.com/cppblog/introducing-the-visual-studio-build-tools"
 
 version = "14.16.27023"
 
@@ -32,7 +32,7 @@ def commands():
 
     msvc_version = str(this.version)
     vs_version = "15.9"
-    win_sdk_version = "10.0.18362.0"
+    win_sdk_version = "10.0.17763.0"
     install_dir = os.path.join("{root}", "vs_BuildTools")
     sdk_dir = os.path.join("C:", os.sep, "Program Files (x86)", "Windows Kits", "10")
     sdk_lib_dir = os.path.join(sdk_dir, "Lib", win_sdk_version)
