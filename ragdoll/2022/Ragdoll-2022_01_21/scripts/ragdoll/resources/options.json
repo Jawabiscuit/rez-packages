@@ -1,0 +1,1224 @@
+{
+    "firstLaunch": {
+        "name": "firstLaunch",
+        "type": "Boolean",
+        "default": true,
+        "help": "This was the first time Ragdoll was installed"
+    },
+    "firstLaunch2": {
+        "name": "firstLaunch2",
+        "type": "Boolean",
+        "default": true,
+        "help": "This was the first time Ragdoll was launched, since licencing was implemented."
+    },
+    "firstLaunch3": {
+        "name": "firstLaunch3",
+        "type": "Boolean",
+        "default": true,
+        "help": "This was the first time Ragdoll was launched since 2021.04.23."
+    },
+    "upgradeOnSceneOpen": {
+        "name": "upgradeOnSceneOpen",
+        "type": "Boolean",
+        "default": true,
+        "help": "Whether or not to check for upgradable nodes on scene-open."
+    },
+    "scale": {
+        "name": "scale",
+        "label": "Draw Scale",
+        "type": "Float",
+        "default": 1.0,
+        "min": 0.01,
+        "max": 10.0,
+        "help": "Scale at which to draw viewport widgets, like constraints."
+    },
+    "cacheMedia": {
+        "name": "cacheMedia",
+        "type": "Enum",
+        "items": ["Off", "On", "All"],
+        "default": 0,
+        "help": "Cache clips in the timeline, for immediate feedback when scroll.<br>- <b>Off</b> Fast, interactive but no scrubbing.<br>- <b>On</b> Slow scrubbing support.<br>- <b>All</b> Interactive scrubbing at the expense of RAM."
+    },
+    "initialShape": {
+        "name": "initialShape",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Auto", "Box", "Sphere", "Capsule", "Mesh"],
+        "help": "Which shape to start out with, 'Auto' means it will determine the shape based on the Maya geometry type. Mesh translates Maya geometry into an optimised collision shape (a.k.a. 'Convex Hull')"
+    },
+    "solver": {
+        "name": "solver",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Create new solver"],
+        "help": "Select which solver to use"
+    },
+    "color": {
+        "name": "color",
+        "type": "Color",
+        "default": "#da8f7e",
+        "help": "Initial color used, can be changed later."
+    },
+    "computeMass2": {
+        "name": "computeMass2",
+        "label": "Compute Mass",
+        "arg": "computeMass",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Off", "Water", "Wood", "Feather", "Air"],
+        "help": "Use the volume and density of the shape to determine its mass. Use with caution, as large differences (10x or more) in mass amongst rigids that interact can cause instability."
+    },
+    "createRigidType": {
+        "name": "createRigidType",
+        "arg": "createRigidType",
+        "label": "Rigid Type",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Active", "Passive"],
+        "help": "How to solve this rigid.<br>- <b>Active</b>  : Simulate this node<br>- <b>Passive</b> : Animate this node"
+    },
+    "rigidDefaults": {
+        "name": "rigidDefaults",
+        "arg": "defaults",
+        "label": "Rigid Type",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Active", "Passive"],
+        "help": "How to solve this rigid.<br>- <b>Active</b>  : Simulate this node<br>- <b>Passive</b> : Animate this node"
+    },
+    "shapeExtents": {
+        "name": "shapeExtents",
+        "type": "Double3",
+        "default": [1, 1, 1],
+        "help": "The XYZ scale of the Box shape type"
+    },
+    "shapeLength": {
+        "name": "shapeLength",
+        "type": "Float",
+        "default": 1,
+        "help": "The length of the capsule and cylinder shape types"
+    },
+    "shapeRadius": {
+        "name": "shapeRadius",
+        "type": "Float",
+        "default": 1,
+        "help": "The length of the capsule and cylinder shape types"
+    },
+    "convertRigidType": {
+        "name": "convertRigidType",
+        "label": "Rigid Type",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Active", "Passive"],
+        "help": "Convert a rigid from active to kinematic or vice versa. 'Opposite' turns passive into active and vice versa automatically."
+    },
+    "rigidSelect": {
+        "name": "rigidSelect",
+        "label": "Select",
+        "type": "Boolean",
+        "default": true,
+        "help": "Automatically select newly created rigid body."
+    },
+    "constraintSelect": {
+        "name": "constraintSelect",
+        "label": "Select",
+        "type": "Boolean",
+        "default": true,
+        "help": "Automatically select newly created constraint."
+    },
+    "autoOrient": {
+        "name": "autoOrient",
+        "type": "Boolean",
+        "default": true,
+        "help": "Orient constraint automatically by aiming towards the immediate child. Otherwise use the local orientation of the node."
+    },
+    "autoReturnToStart": {
+        "name": "autoReturnToStart",
+        "type": "Boolean",
+        "default": true,
+        "help": "Automatically return to the start frame whenever creating new rigid bodies."
+    },
+    "existingAnimation": {
+        "name": "existingAnimation",
+        "type": "Enum",
+        "default": 1,
+        "items": ["Ignore", "Follow"],
+        "help": "Should a constraint be made to try and follow the original animation?"
+    },
+    "constraintType": {
+        "name": "constraintType",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Point", "Orient", "Parent", "Hinge", "Socket"],
+        "help": "The type of constraint created."
+    },
+    "constraintGuideStrength": {
+        "name": "constraintGuideStrength",
+        "label": "Guide Strength",
+        "type": "Float",
+        "default": 1.0,
+        "min": 0.0,
+        "max": 3.0,
+        "help": "Include some guide strength with this constraint."
+    },
+    "convertConstraintType": {
+        "name": "convertConstraintType",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Point", "Orient", "Parent", "Hinge", "Socket"],
+        "help": "The type of constraint to convert to."
+    },
+    "constraintUseRotatePivot": {
+        "name": "constraintUseRotatePivot",
+        "label": "Use Rotate Pivot",
+        "type": "Boolean",
+        "default": true,
+        "help": "Use rotate pivot of child as offset for the constraint frames."
+    },
+    "maintainOffset": {
+        "name": "maintainOffset",
+        "type": "Boolean",
+        "default": true,
+        "help": "Keep rigids where they are, or snap them together. Offsets can be manipulated with the Edit Constraint Frames menu item."
+    },
+    "addUserAttributes": {
+        "name": "addUserAttributes",
+        "type": "Boolean",
+        "default": true,
+        "help": "Expose common physics attributes on the original animation controls, like Mass of rigids and Guide Strength of constraints."
+    },
+    "characterCopy": {
+        "name": "characterCopy",
+        "label": "Copy",
+        "type": "Boolean",
+        "default": true,
+        "help": "Turn a copy of the selected hierarchy into a character, rather than the hierarchy itself."
+    },
+    "characterControl": {
+        "name": "characterControl",
+        "label": "Control",
+        "type": "Boolean",
+        "default": true,
+        "help": "Create an additional control hierarchy from generated character."
+    },
+    "characterStopBehaviour": {
+        "name": "characterStopBehaviour",
+        "label": "Stop Behaviour",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Inclusive", "Exclusive"],
+        "help": "Whether to include the joint with a 'Stop' label in the generated character or not."
+    },
+    "characterSkipBehaviour": {
+        "name": "characterSkipBehaviour",
+        "label": "Skip Behaviour",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Inclusive", "Exclusive"],
+        "help": "Whether to include the joint with a 'Skip' label in the generated character or not."
+    },
+    "characterLabels": {
+        "name": "characterLabels",
+        "label": "Labels",
+        "type": "Separator",
+        "default": ""
+    },
+    "characterNormalise": {
+        "name": "characterNormalise",
+        "label": "Normalise Shapes",
+        "type": "Boolean",
+        "default": false,
+        "help": "Make sure shapes are relatively evenly sized. This can help prevent 'stick-figures' which are tougher to control."
+    },
+    "muscleAimAxis": {
+        "name": "muscleAimAxis",
+        "label": "Aim Axis",
+        "type": "Enum",
+        "default": 0,
+        "items": ["X", "Y", "Z"],
+        "help": "Which axis to treat as aim for the resulting muscle."
+    },
+    "muscleUpAxis": {
+        "name": "muscleUpAxis",
+        "label": "Up Axis",
+        "type": "Enum",
+        "default": 1,
+        "items": ["X", "Y", "Z"],
+        "help": "Which axis to treat as the up-axis for the resulting muscle."
+    },
+    "muscleFlex": {
+        "name": "muscleFlex",
+        "label": "Flex",
+        "type": "Float",
+        "min": 0.0,
+        "max": 1.0,
+        "default": 0.75,
+        "help": "How much to allow the muscle to contract, from not-at-all to all-the-way."
+    },
+    "muscleRadius": {
+        "name": "muscleRadius",
+        "label": "Radius",
+        "type": "Float",
+        "min": 0.0,
+        "max": 10.0,
+        "default": 1.0,
+        "help": "Capsule radius, how thick of a muscle to make."
+    },
+    "initialStateUseSelection": {
+        "name": "initialStateUseSelection",
+        "label": "Use Selection",
+        "type": "Boolean",
+        "default": true,
+        "help": "Clear initial state on selection only, or everything in the related scene."
+    },
+    "selectUseSelection": {
+        "name": "selectUseSelection",
+        "label": "Use Selection",
+        "type": "Boolean",
+        "default": false,
+        "help": "Filter current selection by type. For example, with an entire hierarchy selected, remove anything that isn't a 'rdRigid' node."
+    },
+    "freezeEvaluation": {
+        "name": "freezeEvaluation",
+        "label": "Freeze",
+        "type": "Boolean",
+        "default": true,
+        "help": "Freeze, or unfreeze the selected nodes."
+    },
+    "freezeEvaluationHierarchy": {
+        "name": "freezeEvaluationHierarchy",
+        "label": "Include Hierarchy",
+        "type": "Boolean",
+        "default": true,
+        "help": "Include the selected hierarchy, including shapes."
+    },
+    "freezeEvaluationShapesOnly": {
+        "name": "freezeEvaluationShapesOnly",
+        "label": "Shapes Only",
+        "type": "Boolean",
+        "default": false,
+        "help": "Leave transforms alone. This won't bring half as much performance, but can make e.g. joint hierarchies render properly."
+    },
+
+    "tuneMirrored": {
+        "name": "tuneMirrored",
+        "label": "Tune Mirrored",
+        "type": "Boolean",
+        "default": false,
+        "help": "Dragging left rotates in the positive per default, this toggle flips that around."
+    },
+
+    "tuneMirrored": {
+        "name": "tuneMirrored",
+        "label": "Tune Mirrored",
+        "type": "Boolean",
+        "default": false,
+        "help": "Dragging left rotates in the positive per default, this toggle flips that around."
+    },
+
+    "#": "----------------",
+    "#": " Mimic ",
+    "#": "----------------",
+
+
+    "mimicExclusive": {
+        "name": "mimicExclusive",
+        "label": "Make Exclusive",
+        "type": "Boolean",
+        "default": true,
+        "help": "Disable any other constraints influencing this chain, making this the exclusive influence."
+    },
+    "mimicAddMultiplier": {
+        "name": "mimicAddMultiplier",
+        "label": "Add Globals",
+        "type": "Boolean",
+        "default": true,
+        "help": "Add a multiplier to the root of the newly created mimic."
+    },
+    "mimicAddUserAttributes": {
+        "name": "mimicAddUserAttributes",
+        "label": "Add User Attributes",
+        "type": "Boolean",
+        "default": true,
+        "help": "Forward attributes from shape nodes to the main transform of the mimic."
+    },
+    "rigidAddUserAttributes": {
+        "name": "rigidAddUserAttributes",
+        "arg": "addUserAttributes",
+        "label": "Add User Attributes",
+        "type": "Boolean",
+        "default": true,
+        "help": "Forward attributes from rigid to the parent transform."
+    },
+    "mimicAddSoftPin": {
+        "name": "mimicAddSoftPin",
+        "label": "Add Soft Pin",
+        "type": "Boolean",
+        "default": true,
+        "help": "Add soft pin constraints between the mimic and chain."
+    },
+    "mimicAddHardPin": {
+        "name": "mimicAddHardPin",
+        "label": "Add Hard Pin",
+        "type": "Boolean",
+        "default": true,
+        "help": "Add hard pin influences between the mimic and chain."
+    },
+    "mimicFreezeTransform": {
+        "name": "mimicFreezeTransform",
+        "label": "Freeze Transform",
+        "type": "Boolean",
+        "default": true,
+        "help": "Zero out translate and rotate values on the newly created mimic. (Requires Maya 2020 and above)"
+    },
+    "mimicCleanChannelBox": {
+        "name": "mimicCleanChannelBox",
+        "label": "Clean Channel Box",
+        "type": "Boolean",
+        "default": true,
+        "help": "Hide shape nodes from the channel box, leaving only the attributes on the transform node present."
+    },
+    "mimicNodeType": {
+        "name": "mimicNodeType",
+        "label": "Node Type",
+        "type": "Enum",
+        "items": ["Transform", "Joint"],
+        "default": 0,
+        "help": "Transform for simplicity, joint for flexibility (such as IK)."
+    },
+
+
+
+    "#": "----------------",
+    "#": " Chain ",
+    "#": "----------------",
+
+
+    "chainShapeType": {
+        "name": "chainShapeType",
+        "label": "Initial Shape",
+        "type": "Enum",
+        "default": 0,
+        "items": ["Auto", "Box", "Sphere", "Capsule", "Mesh"],
+        "help": "Which shape to start out with, 'Auto' means it will determine the shape based on the Maya geometry type. Mesh translates Maya geometry into an optimised collision shape (a.k.a. 'Convex Hull')"
+    },
+    "chainDrawShaded": {
+        "name": "chainDrawShaded",
+        "label": "Draw Shaded",
+        "type": "Boolean",
+        "default": true,
+        "help": "Whether to render the wireframe or shaded surface of rigids."
+    },
+    "chainAutoMultiplier": {
+        "name": "chainAutoMultiplier",
+        "label": "Auto Globals",
+        "type": "Boolean",
+        "default": true,
+        "help": "Automatically add a constraint multiplier to the dynamic control root."
+    },
+    "chainPassiveRoot": {
+        "name": "chainPassiveRoot",
+        "label": "Passive Root",
+        "type": "Boolean",
+        "default": true,
+        "help": "Should the root be passive?"
+    },
+    "chainAutoLimits": {
+        "name": "chainAutoLimits",
+        "label": "Auto Limits",
+        "type": "Boolean",
+        "default": false,
+        "enabled": false,
+        "help": "Generate suitable limits automatically from input."
+    },
+
+    "replaceMeshExclusive": {
+        "name": "replaceMeshExclusive",
+        "label": "Exclusive",
+        "type": "Boolean",
+        "default": true,
+        "help": "Make this mesh the only input, removing any exising curve or surface that may or may not already be connected."
+    },
+    "replaceMeshMaintainOffset": {
+        "name": "replaceMeshMaintainOffset",
+        "label": "Maintain Offset",
+        "type": "Boolean",
+        "default": true,
+        "help": "Use the worldspace position of the mesh to be replaced."
+    },
+    "replaceMeshMaintainHistory": {
+        "name": "replaceMeshMaintainHistory",
+        "label": "Maintain History",
+        "type": "Boolean",
+        "default": true,
+        "help": "Allow changes to be made to the original mesh."
+    },
+
+
+    "#": "----------------",
+    "#": " Import/Export  ",
+    "#": "----------------",
+
+
+    "importPath": {
+        "name": "importPath",
+        "label": "Directory",
+        "type": "Path",
+        "default": "",
+        "help": "Import physics from this .rag file."
+    },
+
+    "importPaths": {
+        "name": "importPaths",
+        "label": "Filename",
+        "type": "Table",
+        "items": [],
+        "default": "",
+        "help": "Other .rag files in the same directory."
+    },
+
+    "importPreserveAttributes": {
+        "name": "importPreserveAttributes",
+        "label": "Preserve Attributes",
+        "type": "Boolean",
+        "default": true,
+        "help": "Preserve changes to attributes like 'Shape Extents' and 'Rotate Limit Y' from the exported file."
+    },
+
+    "importAutoNamespace": {
+        "name": "importAutoNamespace",
+        "label": "Auto Namespace",
+        "type": "Boolean",
+        "default": true,
+        "help": "Replace namespace from file with selected namespace."
+    },
+
+    "importAutoScene": {
+        "name": "importAutoScene",
+        "label": "Auto Scene",
+        "type": "Boolean",
+        "default": true,
+        "help": "Preserve the original scene from the exported .rag file. If not, create a new scene for every import."
+    },
+
+    "importSolver": {
+        "name": "importSolver",
+        "label": "Solver",
+        "type": "Enum",
+        "items": ["From File", "From Scene"],
+        "default": 1,
+        "help": "Either create a new solver from this file, or reuse any solver currently found in the scene."
+    },
+
+    "importNamespace": {
+        "name": "importNamespace",
+        "label": "Namespace",
+        "type": "Enum",
+        "items": ["Off", "From File", "Custom"],
+        "default": 1,
+        "help": "Import onto this namespace."
+    },
+
+    "importNamespaceCustom": {
+        "name": "importNamespaceCustom",
+        "label": "Custom Namespace",
+        "type": "String",
+        "placeholder": "Enter a custom namespace",
+        "default": "",
+        "help": "Manually specify a namespace."
+    },
+
+    "importSearchAndReplace": {
+        "name": "importSearchAndReplace",
+        "label": "Search and Replace",
+        "type": "String2",
+        "default": ["", ""],
+        "placeholder": ["Search", "Replace"],
+        "help": "Replace part of a full node path with something else, such as a prefix. E.g. replace 'rig1_' with 'rig2_' to turn 'rig1_foot_ctl' into 'rig2_foot_ctl'"
+    },
+
+    "importCurrentSelection": {
+        "name": "importCurrentSelection",
+        "label": "Preview",
+        "type": "String2",
+        "editable": false,
+        "default": ["", ""],
+        "placeholder": ["", ""],
+        "help": "Full path from the file on one side, and the path Ragdoll uses to find a matching node in your current Maya scene. Use the <b>Search & Replace</b> and <b>Namespace</b> fields above to tune the matching algorithm."
+    },
+
+    "importMergePhysics": {
+        "name": "importMergePhysics",
+        "label": "Merge",
+        "type": "Boolean",
+        "default": true,
+        "enabled": false,
+        "help": "Apply physics to existing objects in the currently opened Maya scene."
+    },
+
+    "importCreateMissingTransforms": {
+        "name": "importCreateMissingTransforms",
+        "label": "Create Missing Transforms",
+        "type": "Boolean",
+        "default": false,
+        "help": "For any markers in this file without a corresponding transform in Maya, create one automatically. Useful for things such as the default ground and any extra rigids you create as part of your authoring process."
+    },
+
+    "importMethod": {
+        "name": "importMethod",
+        "enabled": false,
+        "type": "Enum",
+        "items": ["Load", "Reinterpret"],
+        "default": 1,
+        "help": "Load each individual Ragdoll node as they existed at the time of export, or *reinterpret* the exported file to try and figure out what commands were used to create it, and then execute those same commands to the currently opened scene."
+    },
+
+    "importUseSelection": {
+        "name": "importUseSelection",
+        "label": "Use Selection",
+        "type": "Boolean",
+        "default": false,
+        "help": "Import onto selection, ignore everything else."
+    },
+
+    "importIncludeControls": {
+        "name": "importIncludeControls",
+        "label": "Include Controls",
+        "type": "Boolean",
+        "default": false,
+        "enabled": false,
+        "help": "Include controls from imported file (if any)."
+    },
+
+    "importIncludeAnimation": {
+        "name": "importIncludeAnimation",
+        "label": "Include Animation",
+        "type": "Boolean",
+        "default": false,
+        "enabled": false,
+        "help": "Include animation from imported file (if any)."
+    },
+
+    "importIncludeSimulation": {
+        "name": "importIncludeSimulation",
+        "label": "Include Simulation",
+        "type": "Boolean",
+        "default": false,
+        "enabled": false,
+        "help": "Include simulation from imported file (if any)."
+    },
+
+    "exportPath": {
+        "name": "exportPath",
+        "label": "Filename",
+        "type": "Path",
+        "default": "",
+        "help": "Export physics to this .rag file."
+    },
+
+    "exportSolver": {
+        "name": "exportSolver",
+        "label": "Solver",
+        "enabled": false,
+        "type": "Enum",
+        "items": ["All", "Selected"],
+        "default": 0,
+        "help": "Which solvers to include in the export."
+    },
+
+    "exportFormat": {
+        "name": "exportFormat",
+        "label": "Format",
+        "enabled": false,
+        "type": "Enum",
+        "items": ["*.rag", "*.ragz"],
+        "default": 0,
+        "help": "Format in which to store the markers, one ASCII and humanly readable format versus one binary and compact format better suited for convex meshes and long-running simulations."
+    },
+
+    "exportThumbnail": {
+        "name": "exportThumbnail",
+        "label": "Thumbnail",
+        "type": "ImageButton",
+        "default": "",
+        "help": "<b>Click to update</b> thumbnail included with export."
+    },
+
+    "exportIncludeThumbnail": {
+        "name": "exportIncludeThumbnail",
+        "label": "Include Thumbnail",
+        "type": "Boolean",
+        "default": true,
+        "help": "Include a small screenshot of the current scene at the time of export."
+    },
+
+    "exportIncludeAnimation": {
+        "name": "exportIncludeAnimation",
+        "label": "Include Animation",
+        "type": "Boolean",
+        "default": false,
+        "enabled": false,
+        "help": "Include animation in exported file."
+    },
+
+    "exportIncludeSimulation": {
+        "name": "exportIncludeSimulation",
+        "label": "Include Simulation",
+        "type": "Boolean",
+        "default": false,
+        "enabled": false,
+        "help": "Include simulation in exported file."
+    },
+
+
+
+    "#": "----------------",
+    "#": " Bake options ",
+    "#": "----------------",
+
+
+
+    "bakePerformance": {
+        "name": "bakePerformance",
+        "label": "Performance",
+        "type": "Enum",
+        "items": ["Draw Everything", "Isolate Physics", "Disable Viewport"],
+        "default": 2,
+        "help": "Improve performance by hiding anything unrelated to the simulation, or disabling the viewport(s) altogether whilst baking."
+    },
+    "bakeDeletePhysics": {
+        "name": "bakeDeletePhysics",
+        "label": "Delete Physics",
+        "type": "Boolean",
+        "default": true,
+        "help": "Delete all on completion, they no longer have any effect."
+    },
+    "bakeToLayer": {
+        "name": "bakeToLayer",
+        "enabled": false,
+        "type": "Boolean",
+        "default": false,
+        "help": "Bake to a new animation layer."
+    },
+    "bakeIncludeStatic": {
+        "name": "bakeIncludeStatic",
+        "label": "Include Static",
+        "type": "Boolean",
+        "default": false,
+        "help": "Bake passive rigids too, even though they aren't affected by physics."
+    },
+    "bakeUnrollRotation": {
+        "name": "bakeUnrollRotation",
+        "label": "Unroll Rotation",
+        "type": "Boolean",
+        "default": true,
+        "help": "Let rotations exceed 360 degrees (good for motion blur)."
+    },
+    "bakeRange": {
+        "name": "bakeRange",
+        "label": "Time Range",
+        "enabled": false,
+        "type": "Enum",
+        "items": ["Time Slider", "Start/End"],
+        "default": 0,
+        "help": "Bake this range."
+    },
+    "bakeStartTime": {
+        "name": "bakeStartTime",
+        "label": "Start Time",
+        "enabled": false,
+        "type": "Integer",
+        "default": 0,
+        "help": "Start baking from this time."
+    },
+    "bakeEndTime": {
+        "name": "bakeEndTime",
+        "enabled": false,
+        "label": "End Time",
+        "type": "Integer",
+        "default": 100,
+        "help": "Finish baking at this time."
+    },
+    "bakeScene": {
+        "name": "bakeScene",
+        "label": "Scene",
+        "type": "Enum",
+        "items": ["All", "Selected"],
+        "default": 0,
+        "help": "Limit baking to rigid bodies in this scene."
+    },
+
+
+
+    "#": "----------------",
+    "#": " Markers ",
+    "#": "----------------",
+
+    "markersCreateGround": {
+        "name": "markersCreateGround",
+        "label": "Create Ground",
+        "type": "Boolean",
+        "default": true,
+        "help": "Whether or not to automatically create a ground with a new solver."
+    },
+
+    "markersCreateObjectSet": {
+        "name": "markersCreateObjectSet",
+        "label": "Create Object Set",
+        "type": "Boolean",
+        "default": false,
+        "help": "Gather all newly created markers into an object set."
+    },
+
+    "markersCreateLollipop": {
+        "name": "markersCreateLollipop",
+        "label": "Create Lollipop",
+        "type": "Boolean",
+        "default": false,
+        "help": "Add an extra 'lollipop' control to marked nodes, to more easily find relevant marker attributes."
+    },
+
+    "markersIgnoreJoints": {
+        "name": "markersIgnoreJoints",
+        "label": "Ignore Joints",
+        "type": "Boolean",
+        "default": false,
+        "help": "Do not record to joints, these are typically read-only."
+    },
+
+    "markersAutoLimit": {
+        "name": "markersAutoLimit",
+        "label": "Auto Limit",
+        "type": "Boolean",
+        "default": true,
+        "help": "Transfer the locked state of rotate XYZ into locked limits."
+    },
+
+    "markersUseSelection": {
+        "name": "markersUseSelection",
+        "label": "Use Selection",
+        "type": "Boolean",
+        "default": false,
+        "help": "Should I record only to the selected controls?"
+    },
+
+    "markersRecordReset": {
+        "name": "markersRecordReset",
+        "label": "Reset Markers",
+        "type": "Boolean",
+        "default": false,
+        "help": "Make all markers kinematic once recording is complete."
+    },
+
+    "markersRecordMaintainOffset2": {
+        "name": "markersRecordMaintainOffset2",
+        "label": "Maintain Offset",
+        "type": "Enum",
+        "items": ["Off", "From Retargeting", "From Start"],
+        "default": 2,
+        "help": "Should I keep the offset between marker and control as I record?"
+    },
+
+    "markersRecordKinematic": {
+        "name": "markersRecordKinematic",
+        "label": "Include Kinematic Keys",
+        "type": "Boolean",
+        "default": true,
+        "help": "Should I include non-simulated (kinematic) motion during the record?"
+    },
+
+    "markersRecordSimplify": {
+        "name": "markersRecordSimplify",
+        "label": "Simplify Recorded Channels",
+        "type": "Boolean",
+        "default": false,
+        "help": "Should I reduce static keys and generally make the result easier to work with?"
+    },
+
+    "markersRecordUnroll": {
+        "name": "markersRecordUnroll",
+        "label": "Unroll Rotations",
+        "type": "Boolean",
+        "default": true,
+        "help": "Should I let rotations go beyond 180 degrees? Generally yes, for things like motion blur and anything happening between two keys."
+    },
+
+    "markersRecordFilter": {
+        "name": "markersRecordFilter",
+        "label": "Rotation Filter",
+        "type": "Enum",
+        "items": ["Off", "Euler", "Quaternion"],
+        "default": 1,
+        "help": "Ragdoll can't recognise rotations past 180 degrees, this filter enables Maya's curves to do that anyway."
+    },
+
+    "markersRecordToLayer": {
+        "name": "markersRecordToLayer",
+        "label": "Record to Layer",
+        "type": "Boolean",
+        "default": true,
+        "help": "Put all simulation onto a new Animation Layer"
+    },
+
+    "markersRecordRange": {
+        "enabled": false,
+        "name": "markersRecordRange",
+        "label": "Record Range",
+        "type": "Enum",
+        "items": ["Animation Range", "Full Range", "Custom"],
+        "default": 0,
+        "help": "Start recording from here."
+    },
+
+    "markersRecordCustomStartTime": {
+        "enabled": false,
+        "name": "markersRecordCustomStartTime",
+        "label": "Start Time",
+        "type": "Integer",
+        "default": 1,
+        "help": "Start recording from here."
+    },
+
+    "markersRecordCustomEndTime": {
+        "enabled": false,
+        "name": "markersRecordCustomEndTime",
+        "label": "End Time",
+        "type": "Integer",
+        "default": 100,
+        "help": "Record until this time."
+    },
+
+    "markersAppendTarget": {
+        "name": "markersAppendTarget",
+        "label": "Append",
+        "type": "Boolean",
+        "default": false,
+        "help": "Should I <b>replace</b> the current target, or add another?"
+    },
+
+    "basicsSeparator": {
+        "name": "basicsSeparator",
+        "label": "Basics",
+        "type": "Separator",
+        "default": ""
+    },
+
+    "channelBoxSeparator": {
+        "name": "channelBoxSeparator",
+        "label": "Channel Box",
+        "type": "Separator",
+        "default": ""
+    },
+
+    "markersChannelBoxMaterial": {
+        "name": "markersChannelBoxMaterial",
+        "label": "Material Attributes",
+        "type": "Boolean",
+        "default": true,
+        "help": "Show material attributes in Channel Box, like Mass and Friction"
+    },
+
+    "markersChannelBoxShape": {
+        "name": "markersChannelBoxShape",
+        "label": "Shape Attributes",
+        "type": "Boolean",
+        "default": true,
+        "help": "Show shape attributes in Channel Box, like Radius and Extents"
+    },
+
+    "markersChannelBoxLimit": {
+        "name": "markersChannelBoxLimit",
+        "label": "Limit Attributes",
+        "type": "Boolean",
+        "default": false,
+        "help": "Show limit attributes in Channel Box, like Stiffness and Range"
+    },
+
+    "markersDensity": {
+        "name": "markersDensity",
+        "label": "Density",
+        "type": "Enum",
+        "default": 3,
+        "items": ["Off", "Cotton", "Wood", "Flesh", "Uranium", "Black Hole", "Custom"],
+        "help": "Use the volume and density of the shape to determine its mass."
+    },
+
+
+    "#": "---------------------",
+    "#": " Manipulator options ",
+    "#": "---------------------",
+
+
+    "manipRangeScale": {
+        "name": "manipRangeScale",
+        "label": "Range Scale",
+        "type": "Float",
+        "default": 1.0,
+        "help": "Increase or decrease the range at which sliders operate. For example, if a slider is normally between 1-10, a scale of 2.0 would make it 0.5-20"
+    },
+
+
+    "#": "----------------",
+    "#": " Global options ",
+    "#": "----------------",
+
+
+    "autoInitialState": {
+        "name": "autoInitialState",
+        "label": "Auto Initial State",
+        "type": "Boolean",
+        "default": true,
+        "help": "(Requires scene reopen) Whether or not to use the pose of a rigid at the start time as the active initial state. This feature records the pose from frame 1 at frame 2, by inserting itself in between finished evaluation of frame 1 and yet-to-begin evaluation of frame 2."
+    },
+    "monitorScale": {
+        "name": "monitorScale",
+        "label": "Monitor Scale",
+        "type": "Boolean",
+        "default": true,
+        "help": "(Requires scene reopen) Synchonise viewport rendering with scale of rigids. Without this, synchronisation happens after playback followed by a re-select."
+    },
+    "newAutoInitialState": {
+        "name": "newAutoInitialState",
+        "label": "New Auto Initial State",
+        "type": "Boolean",
+        "default": false,
+        "help": "Experimental auto initial state."
+    },
+    "frameskipMethod": {
+        "name": "frameskipMethod",
+        "label": "Frameskip Method",
+        "type": "Enum",
+        "default": 1,
+        "items": ["Ignore", "Pause"],
+        "help": "What should Ragdoll do when one or more frames are skipped? Should Ragdoll pause simulation until you revisit the last-known frame? Or just pretend everything is OK, and produce garbage values?"
+    },
+    "autoUpgrade": {
+        "name": "autoUpgrade",
+        "label": "Auto Upgrade",
+        "type": "Boolean",
+        "default": true,
+        "help": "Whether or not to ask before upgrading a scene saved with an older version of Ragdoll."
+    },
+    "globalsValidations": {
+        "name": "globalsValidations",
+        "label": "Validations",
+        "type": "Separator",
+        "default": "Various pre-flight checks to ensure Ragdoll is performing optimally."
+    },
+    "cycleProtection": {
+        "name": "cycleProtection",
+        "label": "Cycle Protection",
+        "type": "Boolean",
+        "default": true,
+        "help": "Protect against accidental cycles."
+    },
+    "validateNonCommercialRecord": {
+        "name": "validateNonCommercialRecord",
+        "type": "Boolean",
+        "default": true,
+        "help": "Provide details about the limitations of Ragdoll Trial and Personal licences."
+    },
+    "validateEvaluationMode": {
+        "name": "validateEvaluationMode",
+        "type": "Boolean",
+        "default": true,
+        "help": "Check whether Maya is evaluating in Parallel or Serial whenever creating a new scene, as DG is slow and error-prone."
+    },
+    "validateLegacyOpenGL2": {
+        "name": "validateLegacyOpenGL2",
+        "label": "Validate Legacy OpenGL",
+        "type": "Boolean",
+        "default": true,
+        "help": "Check whether Viewport 2.0 is set to render using Legacy OpenGL. That isn't supported."
+    },
+    "validateCachingMode": {
+        "name": "validateCachingMode",
+        "type": "Boolean",
+        "default": true,
+        "help": "Check whether Maya is caching dynamics, which is required in order for Cached Playback to work with Ragdoll."
+    },
+    "validateRotatePivot": {
+        "name": "validateRotatePivot",
+        "type": "Boolean",
+        "default": true,
+        "help": "Check whether the selected transform has a non-zero rotatePivot; they are unsupported and will be zeroed out."
+    },
+    "validateScalePivot": {
+        "name": "validateScalePivot",
+        "type": "Boolean",
+        "default": false,
+        "help": "Check whether the selected transform has a non-zero scalePivot; they are unsupported and will be zeroed out."
+    },
+    "validatePlaybackSpeed": {
+        "name": "validatePlaybackSpeed",
+        "type": "Boolean",
+        "default": true,
+        "help": "Make sure Maya's playback speed is set to 'Play every frame'."
+    },
+    "validateRotateAxis": {
+        "name": "validateRotateAxis",
+        "type": "Boolean",
+        "default": false,
+        "help": "Let the user know of a Ragdoll limitation, that a custom rotate axis are unsupported."
+    },
+    "validateRotateOrder": {
+        "name": "validateRotateOrder",
+        "type": "Boolean",
+        "default": false,
+        "help": "Let the user know of a Ragdoll limitation, that a custom rotate order are currently unsupported."
+    },
+    "validateScale": {
+        "name": "validateScale",
+        "type": "Boolean",
+        "default": false,
+        "help": "Let the user know of a Ragdoll limitation, that scale is unsupported."
+    },
+    "validateLayerOverride": {
+        "name": "validateLayerOverride",
+        "type": "Boolean",
+        "default": true,
+        "help": "Make sure the animation layer is set to Override on 'Record Simulation', not Additive."
+    },
+    "sceneScale": {
+        "name": "sceneScale",
+        "type": "Float",
+        "default": 10.0,
+        "min": 0.001,
+        "max": 100.0,
+        "help": "(Requires plug-in reload) Internal tolerances to use when computing convex meshes and some forces, default is 0.1 meaning things are assumed 10x smaller than real-world scale e.g. a character is 17 cm tall."
+    },
+    "useProxyAttributes": {
+        "name": "useProxyAttributes",
+        "type": "Boolean",
+        "default": false,
+        "help": "Use native Maya proxy attributes for Ragdoll user attributes. CAUTION! This is unstable and may fatal crash Maya, especially during deletion of physics."
+    },
+    "useUIDrawManager": {
+        "name": "useUIDrawManager",
+        "type": "Boolean",
+        "default": true,
+        "help": "Whether to draw lines and things using Maya's native API, which appears broken on some hardware..."
+    },
+
+
+    "deleteFromSelection": {
+        "name": "deleteFromSelection",
+        "type": "Boolean",
+        "default": false,
+        "help": "Limit deletion to selection-only, rather than the whole scene."
+    },
+    "deleteAttributesToo": {
+        "name": "deleteAttributesToo",
+        "type": "Boolean",
+        "default": true,
+        "help": "Delete custom attributes, if any, in addition to Ragdoll nodes."
+    },
+    "constraintOutlinerStyle": {
+        "name": "constraintOutlinerStyle",
+        "label": "Outliner Style",
+        "type": "Enum",
+        "items": ["nConstraint", "Maya Constraint", "Ragdoll"],
+        "default": 2,
+        "help": "Where to put the new constraint, either as (1) a new transform at the root of your Maya scene like nCloth/nHair, (2) a child of the rigid parent like Maya's native constraints or (3) as a shape next to the rdRigid node."
+    },
+    "constraintAddUserAttributes": {
+        "name": "constraintAddUserAttributes",
+        "arg": "addUserAttributes",
+        "label": "Standalone",
+        "type": "Boolean",
+        "default": false,
+        "help": "Give constraints their own transform at the root of the outliner."
+    },
+    "ogsReset": {
+        "name": "ogsReset",
+        "label": "DG Viewport Fix",
+        "type": "Boolean",
+        "default": false,
+        "help": "Improve viewport robustness when simulating in DG Evaluation mode, by calling `ogs -reset` on the start frame. Bear in mind this action is global to Maya and may negatively (or positively) affect other nodes in your scene."
+    },
+    "maya2018ConsolidateWorldFix": {
+        "name": "maya2018ConsolidateWorldFix",
+        "label": "Maya 2018 Consolidate World Fix",
+        "type": "Boolean",
+        "default": true,
+        "help": "Work around a limitation in Maya 2018 to better support rigid textures and sleep rendering."
+    },
+    "skinweightsFix": {
+        "name": "skinweightsFix",
+        "label": "Fix right-click menu on joints with a rigid",
+        "type": "Boolean",
+        "default": true,
+        "help": "When joints have a shape, such as a rigid body, the right-click menu breaks when wanting to 'Select Influence'. This fixes that, but *may* cause issues elsewhere since it modifies the Maya native context menu for joints. Disable this if it causes any other inconvenience."
+    },
+    "lastVisitedPath": {
+        "name": "lastVisitedPath",
+        "label": "Last Visited Path",
+        "type": "String",
+        "default": "",
+        "help": "Remember and restore the directory last browsed to for importing and exporting of physics."
+    },
+    "useShaders": {
+        "name": "useShaders",
+        "label": "Use Shaders",
+        "type": "Boolean",
+        "default": true,
+        "help": "Render using GLSL shaders in place of Maya factory Blinn."
+    },
+    "reloadShaders": {
+        "name": "reloadShaders",
+        "label": "Reload Shaders",
+        "type": "Boolean",
+        "default": false,
+        "help": "Interactively reload shaders on the creation of a new rdSolver node."
+    },
+    "shaderPath": {
+        "name": "shaderPath",
+        "label": "Shader Path",
+        "type": "String",
+        "default": "",
+        "help": "Absolute path to where shaders are located."
+    },
+    "fontPath": {
+        "name": "fontPath",
+        "label": "Font Path",
+        "type": "String",
+        "default": "",
+        "help": "Absolute path to where fonts are located."
+    },
+    "iconPath": {
+        "name": "iconPath",
+        "label": "Icon Path",
+        "type": "String",
+        "default": "",
+        "help": "Absolute path to where icons are located."
+    },
+    "manipulatorDisplayOptions": {
+        "name": "manipulatorDisplayOptions",
+        "label": "Display Manipulator Options",
+        "type": "Boolean",
+        "default": true,
+        "help": "Default mode for display of options for the various modes."
+    },
+    "manipulatorDisplayHelp": {
+        "name": "manipulatorDisplayHelp",
+        "label": "Display Manipulator Help",
+        "type": "Boolean",
+        "default": true,
+        "help": "Display some help text whenever the manipulator is active."
+    },
+    "manipulatorSymmetry": {
+        "name": "manipulatorSymmetry",
+        "label": "Manipulator Symmetry",
+        "type": "Boolean",
+        "default": true,
+        "help": "Whether or not the manipulator should mirror itself."
+    },
+    "manipulatorSymmetryAxis": {
+        "name": "manipulatorSymmetryAxis",
+        "label": "Manipulator Symmetry Axis",
+        "type": "Enum",
+        "items": ["World X", "World Y", "World Z", "Pose X", "Pose Y", "Pose Z"],
+        "default": 3,
+        "help": "The axis across which symmetry should look for the selected marker."
+    }
+}
