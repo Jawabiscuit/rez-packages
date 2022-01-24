@@ -1,0 +1,109 @@
+//AErdMarkerTemplate.mel
+
+global proc AErdMarkerTemplate(string $nodeName) {
+    editorTemplate -beginScrollLayout;
+
+        editorTemplate -beginLayout "Behaviour" -collapse false;
+            editorTemplate -addControl "enabled";
+            editorTemplate -addControl "inputType";
+            editorTemplate -addControl "driveSpace";
+            editorTemplate -addControl "driveStiffness";
+            editorTemplate -addControl "driveDampingRatio";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Record" -collapse true;
+            editorTemplate -addControl "recordTranslation";
+            editorTemplate -addControl "recordRotation";
+            editorTemplate -addControl "recordToExistingKeys";
+            editorTemplate -addControl "recordToExistingTangents";
+            editorTemplate -addControl "sourceTransform";
+            editorTemplate -addControl "destinationTransform";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Material" -collapse true;
+            editorTemplate -addControl "collide";
+            editorTemplate -addControl "densityType";
+            editorTemplate -addControl "mass";
+            editorTemplate -addControl "friction";
+            editorTemplate -addControl "restitution";
+            editorTemplate -addControl "thickness";
+            editorTemplate -addControl "collisionGroup";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Advanced Pose" -collapse true;
+            editorTemplate -addControl "driveInterpolation";
+            editorTemplate -addControl "driveSpaceCustom";
+            editorTemplate -addControl "driveAngularAmountTwist";
+            editorTemplate -addControl "driveAngularAmountSwing";
+            editorTemplate -addControl "driveAbsoluteLinear";
+            editorTemplate -addControl "driveAbsoluteAngular";
+            editorTemplate -addControl "driveAbsoluteLinearAmount";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Default Shape" -collapse true;
+            editorTemplate -addControl "shapeType";
+            editorTemplate -addControl "shapeExtents";
+            editorTemplate -addControl "shapeLength";
+            editorTemplate -addControl "shapeRadius";
+            editorTemplate -addControl "shapeOffset";
+            editorTemplate -addControl "shapeRotation";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Default Limit" -collapse true;
+            editorTemplate -addControl "limitStiffness";
+            editorTemplate -addControl "limitDampingRatio";
+            editorTemplate -addControl "limitRange";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Level of Detail" -collapse true;
+            editorTemplate -addControl "lodPreset";
+            editorTemplate -addControl "lodOperator";
+            editorTemplate -addControl "lod";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Visualisation" -collapse true;
+            editorTemplate -addControl "displayType";
+            editorTemplate -addControl "color";
+            editorTemplate -addControl "drawScale";
+            editorTemplate -addControl "drawLimit";
+            editorTemplate -addControl "drawDrive";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Advanced" -collapse true;
+            editorTemplate -addControl "asleep";
+            editorTemplate -addControl "disableGravity";
+            editorTemplate -addControl "densityCustom";
+            editorTemplate -addControl "angularMass";
+            editorTemplate -addControl "centerOfMass";
+            editorTemplate -addControl "shapeVertexLimit";
+            editorTemplate -addControl "enableCCD";
+            editorTemplate -addControl "airDensity";
+            editorTemplate -addControl "linearDamping";
+            editorTemplate -addControl "angularDamping";
+            editorTemplate -addControl "positionIterations";
+            editorTemplate -addControl "velocityIterations";
+            editorTemplate -addControl "sleepThreshold";
+            editorTemplate -addControl "wakeCounter";
+            editorTemplate -addControl "maxContactImpulse";
+            editorTemplate -addControl "maxDepenetrationVelocity";
+            editorTemplate -addControl "limitAutoOrient";
+            editorTemplate -addControl "offsetMatrix";
+            editorTemplate -addControl "limitLinearMotion";
+            editorTemplate -beginLayout "Constraint Frames" -collapse true;
+                editorTemplate -addControl "parentFrame";
+                editorTemplate -addControl "childFrame";
+            editorTemplate -endLayout;
+        editorTemplate -endLayout;
+
+        // Create an "Extras" section and also add controls for any
+        // attributes we have not explicitly mentioned.
+        editorTemplate -addExtraControls;
+
+    editorTemplate -endScrollLayout;
+
+    // Tell the attribute editor not to display the attributes we
+    // don't care about.
+    editorTemplate -suppress "caching";
+    editorTemplate -suppress "nodeState";
+    editorTemplate -suppress "frozen";
+}

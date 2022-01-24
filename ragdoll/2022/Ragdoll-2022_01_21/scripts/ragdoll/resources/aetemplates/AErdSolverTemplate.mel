@@ -1,0 +1,80 @@
+//AErdSolverTemplate.mel
+
+global proc AErdSolverTemplate(string $nodeName) {
+    editorTemplate -beginScrollLayout;
+
+        editorTemplate -beginLayout "General" -collapse false;
+            editorTemplate -addControl "enabled";
+            editorTemplate -addControl "cache";
+            editorTemplate -addControl "startTime";
+            editorTemplate -addControl "startTimeCustom";
+            editorTemplate -addControl "substeps";
+            editorTemplate -addControl "positionIterations";
+            editorTemplate -addControl "airDensity";
+            editorTemplate -addControl "gravity";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Pose" -collapse true;
+            editorTemplate -label "Translate Stiffness" -addControl "linearDriveStiffness";
+            editorTemplate -label "Translate Damping" -addControl "linearDriveDamping";
+            editorTemplate -label "Rotate Stiffness" -addControl "angularDriveStiffness";
+            editorTemplate -label "Rotate Damping" -addControl "angularDriveDamping";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Limits" -collapse true;
+            editorTemplate -label "Translate Stiffness" -addControl "linearLimitStiffness";
+            editorTemplate -label "Translate Damping" -addControl "linearLimitDamping";
+            editorTemplate -label "Rotate Stiffness" -addControl "angularLimitStiffness";
+            editorTemplate -label "Rotate Damping" -addControl "angularLimitDamping";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Constraints" -collapse true;
+            editorTemplate -label "Translate Stiffness" -addControl "linearConstraintStiffness";
+            editorTemplate -label "Translate Damping" -addControl "linearConstraintDamping";
+            editorTemplate -label "Rotate Stiffness" -addControl "angularConstraintStiffness";
+            editorTemplate -label "Rotate Damping" -addControl "angularConstraintDamping";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Scale" -collapse true;
+            editorTemplate -addControl "timeMultiplier";
+            editorTemplate -addControl "spaceMultiplier";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Advanced" -collapse true;
+            editorTemplate -addControl "solverType";
+            editorTemplate -addControl "collisionDetectionType";
+            editorTemplate -addControl "frameskipMethod";
+            editorTemplate -addControl "maxMassRatio";
+            // editorTemplate -addControl "enableStabilisation";
+            // editorTemplate -addControl "enableEnhancedFriction";
+            // editorTemplate -label "Continuous Collision Detection" -addControl "enableCCD";
+            editorTemplate -addControl "bounceThresholdVelocity";
+            editorTemplate -label "Position Iterations" -addControl "positionIterations";
+            editorTemplate -addControl "velocityIterations";
+            editorTemplate -addControl "threadCount";
+        editorTemplate -endLayout;
+
+        editorTemplate -beginLayout "Visualisation" -collapse true;
+            editorTemplate -addControl "displayType";
+            editorTemplate -addControl "drawShapes";
+            editorTemplate -addControl "drawConstraints";
+            editorTemplate -addControl "drawLimits";
+            editorTemplate -addControl "drawDrives";
+            editorTemplate -addControl "drawHierarchy";
+            // editorTemplate -addControl "lightDirection";
+        editorTemplate -endLayout;
+
+        // Create an "Extras" section and also add controls for any
+        // attributes we have not explicitly mentioned.
+        editorTemplate -addExtraControls;
+
+    editorTemplate -endScrollLayout;
+
+    // Tell the attribute editor not to display the attributes we
+    // don't care about.
+    editorTemplate -suppress "currentTime";
+    editorTemplate -suppress "caching";
+    editorTemplate -suppress "nodeState";
+    editorTemplate -suppress "localPosition";
+    editorTemplate -suppress "localScale";
+}
