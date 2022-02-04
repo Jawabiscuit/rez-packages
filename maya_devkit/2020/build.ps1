@@ -1,6 +1,6 @@
 $Major = $Args[0]
 $Minor = $Args[1]
-$DoCopy = $Minor = $Args[2]
+$DoCopy = $Args[2]
 $Zip_File = "$env:REZ_BUILD_SOURCE_PATH\rel\Autodesk_Maya_${Major}_${Minor}_Update_DEVKIT_Windows.zip"
 
 if (!(Test-Path ".\devkitBase")) {
