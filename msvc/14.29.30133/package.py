@@ -30,7 +30,7 @@ def build_command():
 def commands():
     import os
 
-    msvc_version = "14.29.30133"
+    msvc_version = str(this.version)
     vs_version = "16.11"
     win_sdk_version = "10.0.19041.0"
     install_dir = os.path.join("{root}", "vs_BuildTools")
@@ -71,11 +71,11 @@ def commands():
         )
     )
 
-    env.CMAKE_GENERATOR.append("Visual Studio 16 2019")
+    env.CMAKE_GENERATOR.append("Visual Studio 16 2019 Win64")
     env.EnterpriseWDK.append("true")
     env.VisualStudioVersion.append(vs_version)
     env.VSINSTALLDIR.append(install_dir)
-    env.VCToolsVersion.append(vs_version)
+    env.VCToolsVersion.append(msvc_version)
     env.VCToolsInstallDir.append(vc_tools_dir)
     env.VCToolsInstallDir_160.append(vc_tools_dir)
 
