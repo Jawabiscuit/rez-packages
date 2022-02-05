@@ -21,12 +21,12 @@ variants = [
 
 requires = [
     "~maya-2020",
-    "msvc-14+<15",
 ]
 
 private_build_requires = [
     "python-2+<3",
-    "maya-2020.4"
+    "maya-2020.4",
+    "msvc-14+<15",
 ]
 
 uuid = "packages.maya-devkit-2020"
@@ -40,7 +40,7 @@ def build_command():
         command = 'pwsh -File "{0}" "{1}" "{2}" "{3}"'
         prefix = "%REZ_BUILD_SOURCE_PATH%"
         script = "build.ps1"
-        docopy = 1  # Set this to 0 to disable copying the extracted devkit to install dir
+        docopy = 0  # Set this to 1 to enable copying the extracted devkit to install dir
     
         return command.format(
             os.path.join(prefix, script),
