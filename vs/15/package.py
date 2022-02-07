@@ -33,6 +33,7 @@ def commands():
     msvc_version = "14.16.27023"
     vs_version = str(this.version)
     win_sdk_version = "10.0.17763.0"
+    cmake_version = "3.12"
     install_dir = os.path.join("{root}", "vs_Community_2017")
     sdk_dir = os.path.join("C:", os.sep, "Program Files (x86)", "Windows Kits", "10")
     sdk_lib_dir = os.path.join(sdk_dir, "Lib", win_sdk_version)
@@ -67,11 +68,13 @@ def commands():
     # Path to mt.exe required by the linker
     env.PATH.append(os.path.join(sdk_bin_dir, "x64"))
     # Path to cmake.exe
-    env.PATH.append(os.path.join(
+    cmake_dir = os.path.join(
             install_dir, "Common7", "IDE", "CommonExtensions",
-            "Microsoft", "CMake", "CMake", "bin"
+            "Microsoft", "CMake", "CMake"
         )
-    )
+    env.PATH.append(os.path.join(cmake_dir, "bin"))
+    # Path to cmake modules
+    env.CMAKE_MODULE_PATH.append(os.path.join(cmake_dir, "share", "cmake-" + cmake_version, "Modules"))
     # Path to ninja.exe
     env.PATH.append(os.path.join(
             install_dir, "Common7", "IDE", "CommonExtensions",
