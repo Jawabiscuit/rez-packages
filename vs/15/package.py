@@ -34,7 +34,7 @@ def commands():
     vs_version = str(this.version)
     win_sdk_version = "10.0.17763.0"
     cmake_version = "3.12"
-    install_dir = os.path.join("{root}", "vs_Community_2017")
+    install_dir = os.path.join(this.root, "vs_Community_2017")
     sdk_dir = os.path.join("C:", os.sep, "Program Files (x86)", "Windows Kits", "10")
     sdk_lib_dir = os.path.join(sdk_dir, "Lib", win_sdk_version)
     sdk_include_dir = os.path.join(sdk_dir, "Include", win_sdk_version)
@@ -69,12 +69,16 @@ def commands():
     env.PATH.append(os.path.join(sdk_bin_dir, "x64"))
     # Path to cmake.exe
     cmake_dir = os.path.join(
-            install_dir, "Common7", "IDE", "CommonExtensions",
-            "Microsoft", "CMake", "CMake"
-        )
+        install_dir, "Common7", "IDE", "CommonExtensions",
+        "Microsoft", "CMake", "CMake"
+    )
     env.PATH.append(os.path.join(cmake_dir, "bin"))
     # Path to cmake modules
-    env.CMAKE_MODULE_PATH.append(os.path.join(cmake_dir, "share", "cmake-" + cmake_version, "Modules"))
+    cmake_module_path = os.path.join(cmake_dir, "share", "cmake-" + cmake_version, "Modules")
+    if "cmake" not in resolve:
+        env.CMAKE_MODULE_PATH.append(
+            cmake_module_path.replace("\\", "/")
+        )
     # Path to ninja.exe
     env.PATH.append(os.path.join(
             install_dir, "Common7", "IDE", "CommonExtensions",
