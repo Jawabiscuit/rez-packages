@@ -47,6 +47,8 @@ def commands():
     env.LIB.append(os.path.join(vc_tools_dir, "lib", "x64"))
     # Path to ucrtd.lib
     env.LIB.append(os.path.join(sdk_lib_dir, "ucrt", "x64"))
+    # Others
+    env.LIB.append(os.path.join(sdk_lib_dir, "ucrt_enclave", "x64"))
 
     # Path to type_traits for Maya Qt dev
     env.INCLUDE.append(os.path.join(vc_tools_dir, "include"))
@@ -54,6 +56,10 @@ def commands():
     env.INCLUDE.append(os.path.join(sdk_include_dir, "ucrt"))
     # Path to basetsd.h for Maya Qt dev
     env.INCLUDE.append(os.path.join(sdk_include_dir, "shared"))
+    # Others
+    env.INCLUDE.append(os.path.join(sdk_include_dir, "cppwinrt"))
+    env.INCLUDE.append(os.path.join(sdk_include_dir, "um"))
+    env.INCLUDE.append(os.path.join(sdk_include_dir, "winrt"))
 
     # Path to VsDevCmd.bat and VsMsBuildCmd.bat
     env.PATH.append(os.path.join(install_dir, "Common7", "Tools"))
