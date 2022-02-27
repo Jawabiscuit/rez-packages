@@ -6,9 +6,6 @@ include(ExternalProject)
 # Print Installing but not Up-to-date messages.
 set(CMAKE_INSTALL_MESSAGE LAZY)
 
-get_filename_component(PKG_CMAKE_PATH "cmake" ABSOLUTE)
-set(CMAKE_MODULE_PATH $ENV{CMAKE_MODULE_PATH} ${PKG_CMAKE_PATH})
-
 set(project_version $ENV{REZ_BUILD_PROJECT_VERSION})
 string(REPLACE "." ";" version_list ${project_version})
 
