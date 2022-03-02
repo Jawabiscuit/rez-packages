@@ -1,0 +1,22 @@
+@echo off
+set build_static=
+set build_dynamic=
+
+for %%i in (%*) do (
+    if %%i==static set build_static=yes
+    if %%i==dynamic set build_dynamic=yes
+)
+
+if not defined build_statis (
+   if not defined build_dynamic set build_dynamic=yes
+)
+
+if defined build_static (
+   echo "=============> building static boost libraries"
+   b2 -j%NUMBER_OF_PROCESSORS% address-model=64 -s BZIP2_SOURCE=@BZIP2_SOURCE_DIR@ -s ZLIB_SOURCE=@ZLIB_SOURCE_DIR@ link=static --stagedir=stage\x64-static stage install
+)
+
+if defined build_dynamic (
+   echo "============> building dynamic boost libraries"
+   b2 -j%NUMBER_OF_PROCESSORS% address-model=64 -s BZIP2_SOURCE=@BZIP2_SOURCE_DIR@ -s ZLIB_SOURCE=@ZLIB_SOURCE_DIR@ link=shared --stagedir=stage\x64-shared stage install
+)
