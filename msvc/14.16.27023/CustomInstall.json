@@ -1,8 +1,8 @@
 {
     "installChannelUri": ".\\ChannelManifest.json",
-    "channelUri": "https://aka.ms/vs/16/release/channel",
+    "channelUri": "https://aka.ms/vs/15/release/channel",
     "installCatalogUri": ".\\Catalog.json",
-    "channelId": "VisualStudio.16.Release",
+    "channelId": "VisualStudio.15.Release",
     "productId": "Microsoft.VisualStudio.Product.BuildTools",
   
     "includeRecommended": true,
