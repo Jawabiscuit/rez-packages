@@ -41,61 +41,62 @@ def commands():
     sdk_bin_dir = os.path.join(sdk_dir, "bin", win_sdk_version)
     vc_tools_dir = os.path.join(install_dir, "VC", "Tools", "MSVC", msvc_version)
 
-    # Path to kernel32.Lib
-    env.LIB.append(os.path.join(sdk_lib_dir, "um", "x64"))
-    # Path to msvcrtd.lib
-    env.LIB.append(os.path.join(vc_tools_dir, "lib", "x64"))
-    # Path to ucrtd.lib
-    env.LIB.append(os.path.join(sdk_lib_dir, "ucrt", "x64"))
-    # Others
-    env.LIB.append(os.path.join(sdk_lib_dir, "ucrt_enclave", "x64"))
+    if building:
+        # Path to kernel32.Lib
+        env.LIB.append(os.path.join(sdk_lib_dir, "um", "x64"))
+        # Path to msvcrtd.lib
+        env.LIB.append(os.path.join(vc_tools_dir, "lib", "x64"))
+        # Path to ucrtd.lib
+        env.LIB.append(os.path.join(sdk_lib_dir, "ucrt", "x64"))
+        # Others
+        env.LIB.append(os.path.join(sdk_lib_dir, "ucrt_enclave", "x64"))
 
-    # Path to type_traits for Maya Qt dev
-    env.INCLUDE.append(os.path.join(vc_tools_dir, "include"))
-    # Path to stddef.h for Maya Qt dev
-    env.INCLUDE.append(os.path.join(sdk_include_dir, "ucrt"))
-    # Path to basetsd.h for Maya Qt dev
-    env.INCLUDE.append(os.path.join(sdk_include_dir, "shared"))
-    # Others
-    env.INCLUDE.append(os.path.join(sdk_include_dir, "cppwinrt"))
-    env.INCLUDE.append(os.path.join(sdk_include_dir, "um"))
-    env.INCLUDE.append(os.path.join(sdk_include_dir, "winrt"))
+        # Path to type_traits for Maya Qt dev
+        env.INCLUDE.append(os.path.join(vc_tools_dir, "include"))
+        # Path to stddef.h for Maya Qt dev
+        env.INCLUDE.append(os.path.join(sdk_include_dir, "ucrt"))
+        # Path to basetsd.h for Maya Qt dev
+        env.INCLUDE.append(os.path.join(sdk_include_dir, "shared"))
+        # Others
+        env.INCLUDE.append(os.path.join(sdk_include_dir, "cppwinrt"))
+        env.INCLUDE.append(os.path.join(sdk_include_dir, "um"))
+        env.INCLUDE.append(os.path.join(sdk_include_dir, "winrt"))
 
 
-    # Path to VsDevCmd.bat and VsMsBuildCmd.bat
-    env.PATH.append(os.path.join(install_dir, "Common7", "Tools"))
-    # Path to vcvarsall.bat
-    env.PATH.append(os.path.join(install_dir, "VC", "Auxiliary", "Build"))
-    # Path to MSBuild.exe
-    env.PATH.append(os.path.join(install_dir, "MSBuild", "Current", "Bin"))
-    # Path to cl.exe and link.exe
-    env.PATH.append(os.path.join(vc_tools_dir, "bin", "Hostx64", "x64"))
-    # Path to mt.exe required by the linker
-    env.PATH.append(os.path.join(sdk_bin_dir, "x64"))
-    # Path to cmake.exe
-    cmake_dir = os.path.join(
-        install_dir, "Common7", "IDE", "CommonExtensions",
-        "Microsoft", "CMake", "CMake"
-    )
-    env.PATH.append(os.path.join(cmake_dir, "bin"))
-    # Path to cmake modules
-    cmake_module_path = os.path.join(cmake_dir, "share", "cmake-" + cmake_version, "Modules")
-    if "cmake" not in resolve:
-        env.CMAKE_MODULE_PATH.append(
-            cmake_module_path.replace("\\", "/")
-        )
-    # Path to ninja.exe
-    env.PATH.append(os.path.join(
+        # Path to VsDevCmd.bat and VsMsBuildCmd.bat
+        env.PATH.append(os.path.join(install_dir, "Common7", "Tools"))
+        # Path to vcvarsall.bat
+        env.PATH.append(os.path.join(install_dir, "VC", "Auxiliary", "Build"))
+        # Path to MSBuild.exe
+        env.PATH.append(os.path.join(install_dir, "MSBuild", "Current", "Bin"))
+        # Path to cl.exe and link.exe
+        env.PATH.append(os.path.join(vc_tools_dir, "bin", "Hostx64", "x64"))
+        # Path to mt.exe required by the linker
+        env.PATH.append(os.path.join(sdk_bin_dir, "x64"))
+        # Path to cmake.exe
+        cmake_dir = os.path.join(
             install_dir, "Common7", "IDE", "CommonExtensions",
-            "Microsoft", "CMake", "Ninja"
+            "Microsoft", "CMake", "CMake"
         )
-    )
+        env.PATH.append(os.path.join(cmake_dir, "bin"))
+        # Path to cmake modules
+        cmake_module_path = os.path.join(cmake_dir, "share", "cmake-" + cmake_version, "Modules")
+        if "cmake" not in resolve:
+            env.CMAKE_MODULE_PATH.append(
+                cmake_module_path.replace("\\", "/")
+            )
+        # Path to ninja.exe
+        env.PATH.append(os.path.join(
+                install_dir, "Common7", "IDE", "CommonExtensions",
+                "Microsoft", "CMake", "Ninja"
+            )
+        )
 
-    env.CMAKE_GENERATOR.append("Visual Studio 16 2019 Win64")
-    env.EnterpriseWDK.append("true")
-    env.VisualStudioVersion.append(vs_version)
-    env.VSINSTALLDIR.append(install_dir)
-    env.VCToolsVersion.append(msvc_version)
-    env.VCToolsInstallDir.append(vc_tools_dir)
-    env.VCToolsInstallDir_160.append(vc_tools_dir)
+        env.CMAKE_GENERATOR.append("Visual Studio 16 2019")
+        env.EnterpriseWDK.append("true")
+        env.VisualStudioVersion.append(vs_version)
+        env.VSINSTALLDIR.append(install_dir)
+        env.VCToolsVersion.append(msvc_version)
+        env.VCToolsInstallDir.append(vc_tools_dir)
+        env.VCToolsInstallDir_160.append(vc_tools_dir)
 
