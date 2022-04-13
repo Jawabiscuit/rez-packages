@@ -23,55 +23,45 @@ private_build_requires = [
     "python-2+<3"
 ]
 
-uuid = "applications.maya-2020"
-
-build_command = "python {root}/package.py {install}"
+uuid = "applications.{}-{}".format(name, version)
 
 
-def build(
-    source_path,
-    build_path,
-    install_path,
-    targets,
-    build_args=None
-):
-    import shutil
+@early()
+def build_command():
+    import os
 
-    install_mode = "install" in targets
+    if os.name == "nt":
+        os.environ["REZ_BUILD_MAYA_INSTALL_PATH"] = os.path.join(
+            "C:", os.sep, "Program Files", "Autodesk",
+            "{}{}".format(
+                str(this.name).capitalize(), this.version.split(".", 1)[0]
+            )
+        )
 
-    def _build():
-        src = os.path.join(source_path, "MayaNoColorManagement.xml")
-        dest = os.path.join(build_path, "MayaNoColorManagement.xml")
-        _copyfile(src, dest)
-    
-    def _install():
-        src = os.path.join(build_path, "MayaNoColorManagement.xml")
-        dest = os.path.join(install_path, "MayaNoColorManagement.xml")
-        _copyfile(src, dest)
-    
-    def _copyfile(src, dest):
-        if os.path.exists(dest):
-            os.remove(dest)
-        if os.path.exists(src):
-            shutil.copy2(src, dest)
+        command = 'pwsh -File "{0}"'
+        prefix = "%REZ_BUILD_SOURCE_PATH%"
+        script = "rezbuild.ps1"
 
-    _build()
-    if install_mode:
-        _install()
+        return command.format(os.path.join(prefix, script))
 
 
 def commands():
     import os
 
     if os.name == "nt":
-        maya_install_path = os.path.join("C:", os.sep, "Program Files", "Autodesk",
-        "{}{}".format(
-            str(this.name).capitalize(), this.version.major
+        maya_install_path = os.path.join(
+            "C:", os.sep, "Program Files", "Autodesk",
+            "{}{}".format(
+                str(this.name).capitalize(), this.version.major
             )
         )
-        env.MAYA_COLOR_MANAGEMENT_POLICY_FILE = os.path.join("{root}", "MayaNoColorManagement.xml")
-        env.MAYA_COLOR_MANAGEMENT_POLICY_LOCK = 1
-        alias("maya2020", r'maya -proj %cd% $*')
+
+        no_color_mgmt_file = os.path.join("{root}", "MayaNoColorManagement.xml")
+        if os.path.exists(no_color_mgmt_file):
+            env.MAYA_COLOR_MANAGEMENT_POLICY_FILE = no_color_mgmt_file
+            env.MAYA_COLOR_MANAGEMENT_POLICY_LOCK = 1
+        
+        env.PSModulePath.append("{root}")
 
     env.MAYA_VERSION = str(this.version)
     env.MAYA_INSTALL_PATH = maya_install_path
@@ -98,23 +88,3 @@ def commands():
     # env.MAYA_DEBUG_IDLE_LICENSE_TIME = 15
     # Disable idle license checking
     # env.MAYA_DISABLE_IDLE_LICENSE = 1
-
-
-if __name__ == "__main__":
-    import os
-    import sys
-    import argparse
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-i", "--install", action="store_true", dest="install")
-    if "install" in sys.argv:
-        sys.argv.remove("install")
-        sys.argv.append("--install")
-    args = parser.parse_args(sys.argv[1:])
-    _targets = ["install"] if args.install else []
-
-    build(source_path=os.environ["REZ_BUILD_SOURCE_PATH"],
-          build_path=os.environ["REZ_BUILD_PATH"],
-          install_path=os.environ["REZ_BUILD_INSTALL_PATH"],
-          targets=_targets,
-          build_args=[])
