@@ -24,7 +24,7 @@ def private_build_requires():
 
     requires = ["zlib-1+<2"]
     if os.name == "nt":
-        return ["msvc-14+<15"] + requires
+        return ["msvc-14.16+<14.20"] + requires
 
 
 def commands():
