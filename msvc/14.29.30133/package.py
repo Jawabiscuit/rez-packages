@@ -98,5 +98,5 @@ def commands():
     env.VCToolsVersion.append(msvc_version)
     env.VCToolsInstallDir.append(vc_tools_dir)
     env.VCToolsInstallDir_160.append(vc_tools_dir)
-    # VS160 for VS v2019 (path to vcvarsall.bat)
-    env.VS160COMNTOOLS.set(os.path.join(install_dir, "VC", "Auxiliary", "Build"))
+    # path to VsDevCmd.bat
+    env.VS160COMNTOOLS.set(os.path.join(install_dir, "Common7", "Tools"))
