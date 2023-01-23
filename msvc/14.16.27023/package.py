@@ -97,5 +97,5 @@ def commands():
     env.VCToolsVersion.set(msvc_version)
     env.VCToolsInstallDir.set(vc_tools_dir)
     env.VCToolsInstallDir_160.set(vc_tools_dir)
-    # VS150 for VS2017 (path to vcvarsall.bat)
-    env.VS150COMNTOOLS.set(os.path.join(install_dir, "VC", "Auxiliary", "Build"))
+    # path to VsDevCmd.bat
+    env.VS150COMNTOOLS.set(os.path.join(install_dir, "Common7", "Tools"))
