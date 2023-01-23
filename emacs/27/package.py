@@ -22,7 +22,7 @@ tools = [
 ]
 
 variants = [
-    ["platform-windows", "arch-AMD64"],
+    ["os-Windows-10"],
 ]
 
 requires = []
@@ -40,7 +40,7 @@ def build_command():
 
     if os.name == "nt":
         command = 'pwsh -File "{0}"'
-        prefix = "%REZ_BUILD_SOURCE_PATH%"
+        prefix = "$REZ_BUILD_SOURCE_PATH"
         script = "build.ps1"
         return command.format(os.path.join(prefix, script))
 
